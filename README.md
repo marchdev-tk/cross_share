@@ -70,9 +70,9 @@ Share().shareFile(
 ```
 
 where:
-    * `name` is a name of the file
-    * `bytes` is a byte array of file to share
-    * `type` is a MIME Type of the file to share
+ * `name` is a name of the file
+ * `bytes` is a byte array of file to share
+ * `type` is a MIME Type of the file to share
 
 ## Feature requests and Bug reports
 
