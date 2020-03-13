@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Local Storage Example',
+      title: 'Cross Share Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Local Storage Example'),
+        title: Text('Cross Share Example'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
