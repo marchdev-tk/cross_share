@@ -1,0 +1,18 @@
+name: cross_share_example
+description: Demonstrates how to use the cross_share package.
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  file_selector:
+    git:
+      url: https://github.com/marchdev-tk/file_selector
+  cross_share:
+    path: ../
+
+flutter:
+  uses-material-design: true
