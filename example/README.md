@@ -1,13 +1,14 @@
 # cross_share_example
 
-Demonstrates how to use the local_storage package.
+Demonstrates how to use the cross_share package.
 
 ## Usage
 
 ```dart
 import 'package:flutter/material.dart';
 
-import 'package:local_storage/local_storage.dart';
+import 'package:cross_share/cross_share.dart';
+import 'package:file_selector/file_selector.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,21 +34,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _sharedPrefController = TextEditingController();
-
-  LocalStorageInterface _localStorage;
-  String _prefStatus = '';
-
-  void _initLocalStorage() async {
-    _localStorage = await LocalStorage.getInstance();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _initLocalStorage();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,49 +45,31 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Center(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 300),
-              child: TextField(
-                controller: _sharedPrefController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Type something to store...',
-                ),
-              ),
+            child: RaisedButton(
+              onPressed: () {
+                Share().shareUrl(url: 'tel:0001112223');
+              },
+              child: Text('Make the call'),
             ),
           ),
           Center(
             child: RaisedButton(
               onPressed: () async {
-                final result = await _localStorage.setString(
-                    'value', _sharedPrefController.text);
-                setState(() => _prefStatus = result
-                    ? 'Successfuly added to the Shared Prefs'
-                    : 'Error occured while adding to the Shared Prefs');
+                final file = await FileSelector().pickFile(
+                  type: FileType.img,
+                );
+
+                if (file == null) return;
+
+                await Share().shareFile(
+                  name: file.name,
+                  bytes: file.bytes,
+                  type: file.type,
+                );
               },
-              child: Text('Add to shared prefs'),
+              child: Text('Select and Share File'),
             ),
           ),
-          Center(
-            child: RaisedButton(
-              onPressed: () {
-                final result = _localStorage.getString('value');
-                setState(() =>
-                    _prefStatus = 'Retreived value from Shared Prefs: $result');
-              },
-              child: Text('Get from shared prefs'),
-            ),
-          ),
-          Center(
-            child: RaisedButton(
-              onPressed: () {
-                _localStorage.clear();
-                setState(() => _prefStatus = 'Cleared Shared Prefs');
-              },
-              child: Text('Clear shared prefs'),
-            ),
-          ),
-          Center(child: Text(_prefStatus)),
         ],
       ),
     );

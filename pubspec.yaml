@@ -1,7 +1,7 @@
 name: cross_share
 version: 1.0.0
 homepage: https://github.com/marchdev-tk/cross_share
-description: Share files and launch call, email, link intents and many more on both Mobile (Android/iOS), Web and Desktop (Windows, macOS, Linux).
+description: Share files and URLs on both Mobile (Android/iOS), Web and Desktop (Windows, macOS, Linux).
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
