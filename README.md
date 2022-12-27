@@ -7,6 +7,8 @@
 A Flutter plugin for `launching a URL` and `sharing files` in the mobile, web and desktop platforms. Supports iOS, Android, Web, Windows, Linux and macOS.
 **Note**: Sharing files supports only on iOS, Android and Web. Desktop support is under development.
 
+# THIS PLUGIN IS DISCONTINUED
+
 ## Getting Started
 
 In order to use this plugin, add dependency in the `pubspec.yaml`:
